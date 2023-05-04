@@ -72,11 +72,23 @@ export const SkeletonItem = ({ ...props }: SkeletonItemProps) => {
 
   const getChildrenWrapper = () => {
     let wrappedChildren = React.Children.map(children, (child, index) => {
-      const childStyle = child?.props.style;
-      if (child?.type === 'Text' || child?.type === 'Image') {
+      if (React.isValidElement(child)) {
+        const childStyle = child?.props.style;
+        if (child?.type === 'Text' || child?.type === 'Image') {
+          return (
+            <View
+              key={index}
+              style={[
+                childStyle,
+                isLoading ? { backgroundColor: backgroundColor } : undefined,
+              ]}
+            >
+              {child}
+            </View>
+          );
+        }
         return (
           <View
-            key={index}
             style={[
               childStyle,
               isLoading ? { backgroundColor: backgroundColor } : undefined,
@@ -86,16 +98,7 @@ export const SkeletonItem = ({ ...props }: SkeletonItemProps) => {
           </View>
         );
       }
-      return (
-        <View
-          style={[
-            childStyle,
-            isLoading ? { backgroundColor: backgroundColor } : undefined,
-          ]}
-        >
-          {child}
-        </View>
-      );
+      return child;
     });
 
     return wrappedChildren ? (

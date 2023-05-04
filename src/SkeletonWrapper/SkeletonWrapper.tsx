@@ -8,12 +8,15 @@ export const SkeletonWrapper = ({ ...props }: SkeletonProps) => {
 
   const getBones = () => {
     return React.Children.map(children, (child, index) => {
-      const childStyle = child?.props.style || {};
-      return (
-        <SkeletonItem key={index} isLoading={isLoading} style={childStyle}>
-          {child}
-        </SkeletonItem>
-      );
+      if (React.isValidElement(child)) {
+        const childStyle = child?.props.style || {};
+        return (
+          <SkeletonItem key={index} isLoading={isLoading} style={childStyle}>
+            {child}
+          </SkeletonItem>
+        );
+      }
+      return child;
     });
   };
 
