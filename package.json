@@ -2,10 +2,11 @@
   "name": "react-native-skeleton",
   "version": "1.0.2",
   "description": "React Native Skeleton loading",
-  "main": "lib/module/index.js",
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
   "types": "lib/typescript/index.d.ts",
   "files": [
-    "lib/**/*"
+    "lib/"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -133,7 +134,12 @@
     "source": "src",
     "output": "lib",
     "targets": [
-      "commonjs",
+      [
+        "commonjs",
+        {
+          "copyFlow": true
+        }
+      ],
       "module",
       [
         "typescript",
