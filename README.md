@@ -11,11 +11,24 @@ npm install react-native-skeleton
 ## Usage
 
 ```js
-import { multiply } from 'react-native-skeleton';
+import SkeletonWrapper from 'react-native-skeleton';
 
 // ...
 
-const result = await multiply(3, 7);
+<SkeletonWrapper isLoading={true} style={{ backgroundColor: 'white' }}>
+  Your component's here
+</SkeletonWrapper>;
+```
+
+Library implements FlatList for showing contents when loading
+
+```js
+import {SkeletonFlatList} from 'react-native-skeleton';
+
+// ...
+
+<SkeletonFlatList isLoading={true} {...rest of FlatList props} />
+
 ```
 
 ## Contributing

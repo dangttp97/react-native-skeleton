@@ -1,6 +1,6 @@
 {
   "name": "react-native-skeleton",
-  "version": "0.1.0",
+  "version": "1.0.2",
   "description": "React Native Skeleton loading",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -17,7 +17,9 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
     "test": "jest --no-watchman",
-    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "prepack": "bob build",
+    "release": "release-it"
   },
   "keywords": [
     "react-native",
