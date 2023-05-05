@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { FlatList, ListRenderItemInfo } from 'react-native';
 import { SkeletonFlatListProps } from '../types';
 import { SkeletonItem } from '../SkeletonItem';
