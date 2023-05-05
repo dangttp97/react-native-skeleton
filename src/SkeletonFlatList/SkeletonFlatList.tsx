@@ -1,9 +1,11 @@
-import React, { forwardRef } from 'react';
+import React, { useRef } from 'react';
 import { FlatList, ListRenderItemInfo } from 'react-native';
 import { SkeletonFlatListProps } from '../types';
 import { SkeletonItem } from '../SkeletonItem';
 
-const InternalFlatList = <T,>({ ...props }: SkeletonFlatListProps<T>) => {
+export const SkeletonFlatList = <T,>({
+  ...props
+}: SkeletonFlatListProps<T>) => {
   const {
     isLoading,
     renderItem: flatListRenderItem,
@@ -41,5 +43,3 @@ const InternalFlatList = <T,>({ ...props }: SkeletonFlatListProps<T>) => {
     />
   );
 };
-
-export const SkeletonFlatList = forwardRef(InternalFlatList);
