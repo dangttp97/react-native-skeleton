@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "outDir": "lib",
     "paths": {
       "react-native-skeleton": ["./src/index"]
     },
@@ -23,5 +23,6 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext"
-  }
+  },
+  "exclude": ["example"]
 }

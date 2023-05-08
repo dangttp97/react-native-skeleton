@@ -6,5 +6,6 @@ export const CONSTANTS = {
   paths: {
     getPhotos: '/photos',
     getCollections: '/collections',
+    getUserPhotos: (username: string) => `/users/${username}/photos`,
   },
 };

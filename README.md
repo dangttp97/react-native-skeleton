@@ -1,11 +1,17 @@
 # react-native-skeleton
 
-Skeleton Loading view for React Native app
+Skeleton Loading animation for React Native app. Adopted with new architecture for performance app
 
 ## Installation
 
 ```sh
 npm install react-native-skeleton
+```
+
+or
+
+```sh
+yarn add react-native-skeleton
 ```
 
 ## Usage
@@ -29,6 +35,12 @@ import {SkeletonFlatList} from 'react-native-skeleton';
 
 <SkeletonFlatList isLoading={true} {...rest of FlatList props} />
 
+```
+
+Library also provides HOC implement by using
+
+```js
+const NamedComponent = withSkeletonLoading(WrappedComponent);
 ```
 
 ## Contributing

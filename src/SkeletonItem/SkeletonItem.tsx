@@ -1,5 +1,5 @@
 import MaskedView from '@react-native-masked-view/masked-view';
-import React, { PropsWithChildren, useEffect, useState } from 'react';
+import React, { PropsWithChildren, useEffect } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import Animated, {
   useSharedValue,
@@ -36,7 +36,8 @@ export const SkeletonItem = ({ ...props }: SkeletonItemProps) => {
     backgroundColor = DEFAULT_BACKGROUND_COLOR,
     highlightColor = DEFAULT_HIGHLIGHT_COLOR,
   } = props;
-  const [layout, setLayout] = useState<LayoutRectangle | undefined>(undefined);
+
+  const layoutShared = useSharedValue<LayoutRectangle | undefined>(undefined);
   const shared = useSharedValue(0);
 
   useEffect(() => {
@@ -55,16 +56,23 @@ export const SkeletonItem = ({ ...props }: SkeletonItemProps) => {
           translateX: interpolate(
             shared.value,
             [0, 1],
-            [layout ? -layout.width : 0, layout ? layout.width : 0]
+            [
+              layoutShared.value ? -layoutShared.value.width : 0,
+              layoutShared.value ? layoutShared.value.width : 0,
+            ]
           ),
         },
       ],
     };
   });
 
-  if (!layout?.width && !layout?.height) {
+  if (!layoutShared.value?.width && !layoutShared.value?.height) {
     return (
-      <View onLayout={(event) => setLayout(event.nativeEvent.layout)}>
+      <View
+        onLayout={(event) => {
+          layoutShared.value = event.nativeEvent.layout;
+        }}
+      >
         {children}
       </View>
     );
@@ -114,7 +122,10 @@ export const SkeletonItem = ({ ...props }: SkeletonItemProps) => {
 
   return isLoading ? (
     <MaskedView
-      style={{ height: layout.height, width: layout.width }}
+      style={{
+        height: layoutShared.value.height,
+        width: layoutShared.value.width,
+      }}
       maskElement={getChildrenWrapper()}
     >
       <View style={[styles.background, { backgroundColor: backgroundColor }]} />

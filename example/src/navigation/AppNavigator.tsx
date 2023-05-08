@@ -20,7 +20,11 @@ export const AppNavigator = () => {
   return (
     <NavigationContainer ref={appNavigationRef}>
       <StatusBar translucent />
-      <Stack.Navigator>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerShown: false,
+        }}>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="UserProfile" component={UserProfile} />
       </Stack.Navigator>

@@ -7,13 +7,23 @@ module.exports = {
     [
       'module-resolver',
       {
-        extensions: ['.tsx', '.ts', '.js', '.json'],
+        extensions: [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx",
+          ".android.js",
+          ".android.tsx",
+          ".ios.js",
+          ".ios.tsx",
+        ],
         alias: {
           [pak.name]: path.join(__dirname, '..', pak.source),
+          "@assets": "./src/assets",
           '@components': './src/components',
-          "@constants": "./src/constants",
-          "@hooks": "./src/hooks",
-          "@navigation": './src/navigation',
+          '@constants': './src/constants',
+          '@hooks': './src/hooks',
+          '@navigation': './src/navigation',
           '@screens': './src/screens',
         },
       },

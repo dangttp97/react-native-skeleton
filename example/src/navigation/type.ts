@@ -1,4 +1,4 @@
 export type AppNavigationType = {
   Home?: {};
-  UserProfile?: {};
+  UserProfile: { userProfile: any };
 };
