@@ -4,11 +4,5 @@ import FastImage from 'react-native-fast-image';
 import SkeletonWrapper from 'react-native-skeleton';
 
 export const ImageViewer = () => {
-  const [isLoading, setIsLoading] = useState(false);
-
-  return (
-    <SkeletonWrapper isLoading={isLoading}>
-      <FastImage />
-    </SkeletonWrapper>
-  );
+  return <FastImage />;
 };

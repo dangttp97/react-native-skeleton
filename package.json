@@ -1,5 +1,5 @@
 {
-  "name": "react-native-skeleton",
+  "name": "@dangttp/react-native-skeleton",
   "version": "1.0.2",
   "description": "React Native Skeleton loading",
   "main": "lib/commonjs/index.js",

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {
   Dimensions,
   ListRenderItemInfo,
@@ -10,7 +10,6 @@ import {
 import { SkeletonFlatList, withSkeletonLoading } from 'react-native-skeleton';
 import { useFetch } from '@hooks';
 import { CONSTANTS } from '@constants';
-import { delay } from 'lodash';
 import { useNavigation } from '@navigation';
 import FastImage from 'react-native-fast-image';
 import { IcHeart, IcMessage } from '@assets';
@@ -19,34 +18,11 @@ const SkeletonTouchable = withSkeletonLoading(TouchableOpacity);
 
 export const Home = () => {
   const navigation = useNavigation();
-  const { request } = useFetch();
-  const [data, setData] = useState<any>(undefined);
-  const [isLoading, setIsLoading] = useState(false);
-  const [refreshing, setRefreshing] = useState(false);
-
-  useEffect(() => {
-    setIsLoading(true);
-    requestData().then(() => {
-      delay(() => setIsLoading(false), 2000);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const requestData = async () => {
-    return request({
-      baseUrl: CONSTANTS.baseUrl,
-      path: CONSTANTS.paths.getPhotos,
-      method: 'get',
-    })
-      .then(value => {
-        console.log('data:', value);
-        setData(value);
-        return Promise.resolve();
-      })
-      .catch(reason => {
-        return Promise.reject(reason);
-      });
-  };
+  const { data, isLoading, isRefreshing, refetch } = useFetch<any>({
+    baseUrl: CONSTANTS.baseUrl,
+    path: CONSTANTS.paths.getPhotos,
+    method: 'get',
+  });
 
   const onPressItem = (userProfile: any) => {
     navigation.navigate('UserProfile', { userProfile });
@@ -90,13 +66,10 @@ export const Home = () => {
   return (
     <View style={styles.container}>
       <SkeletonFlatList
-        refreshing={refreshing}
-        onRefresh={() => {
-          setRefreshing(true);
-          requestData().then(() => setRefreshing(false));
-        }}
+        refreshing={isRefreshing}
+        onRefresh={refetch}
         numberOfDummy={2}
-        isLoading={isLoading || refreshing}
+        isLoading={isLoading}
         data={data}
         renderItem={renderItem}
         ItemSeparatorComponent={() => <View style={styles.separator} />}
