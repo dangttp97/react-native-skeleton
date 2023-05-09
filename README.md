@@ -1,17 +1,17 @@
-# react-native-skeleton
+# @dangttp/react-native-skeleton
 
 Skeleton Loading animation for React Native app. Adopted with new architecture for performance app
 
 ## Installation
 
 ```sh
-npm install react-native-skeleton
+npm install @dangttp/react-native-skeleton
 ```
 
 or
 
 ```sh
-yarn add react-native-skeleton
+yarn add @dangttp/react-native-skeleton
 ```
 
 ## Usage
