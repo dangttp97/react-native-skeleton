@@ -22,7 +22,7 @@ import SkeletonWrapper from 'react-native-skeleton';
 // ...
 
 <SkeletonWrapper isLoading={true} style={{ backgroundColor: 'white' }}>
-  Your component's here
+  {/** Your component's here */}
 </SkeletonWrapper>;
 ```
 
