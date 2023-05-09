@@ -7,12 +7,16 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { SkeletonFlatList, withSkeletonLoading } from 'react-native-skeleton';
+import {
+  SkeletonFlatList,
+  withSkeletonLoading,
+} from '@dangttp/react-native-skeleton';
 import { useFetch } from '@hooks';
 import { CONSTANTS } from '@constants';
 import { useNavigation } from '@navigation';
 import FastImage from 'react-native-fast-image';
 import { IcHeart, IcMessage } from '@assets';
+import { Button } from '@components';
 
 const SkeletonTouchable = withSkeletonLoading(TouchableOpacity);
 
@@ -75,6 +79,7 @@ export const Home = () => {
         ItemSeparatorComponent={() => <View style={styles.separator} />}
         style={styles.list}
       />
+      <Button>ABC</Button>
     </View>
   );
 };

@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ViewStyle,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 export type ButtonProps = PropsWithChildren<{
   onPress?: () => void;
@@ -17,14 +18,27 @@ export type ButtonProps = PropsWithChildren<{
 export const Button = ({ ...props }: ButtonProps) => {
   const { onPress, containerStyle, textStyle, children } = props;
   return (
-    <TouchableOpacity
-      onPress={onPress}
-      style={[styles.container, containerStyle]}>
-      {React.isValidElement(children) ? (
-        children
-      ) : (
-        <Text style={[styles.title, textStyle]}>{children}</Text>
-      )}
+    <TouchableOpacity onPress={onPress}>
+      <LinearGradient
+        colors={[
+          '#405DE6',
+          '#5851DB',
+          '#833AB4',
+          '#C13584',
+          '#E1306C',
+          '#FD1D1D',
+          '#F56040',
+          '#F77737',
+          '#FCAF45',
+          '#FFDC80',
+        ]}
+        style={[styles.container, containerStyle]}>
+        {React.isValidElement(children) ? (
+          children
+        ) : (
+          <Text style={[styles.title, textStyle]}>{children}</Text>
+        )}
+      </LinearGradient>
     </TouchableOpacity>
   );
 };

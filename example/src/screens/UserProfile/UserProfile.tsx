@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SkeletonFlatList } from 'react-native-skeleton';
+import { SkeletonFlatList } from '@dangttp/react-native-skeleton';
 import { ListRenderItemInfo, StyleSheet, Text, View } from 'react-native';
 import { useRoute } from '@navigation';
 import FastImage from 'react-native-fast-image';
@@ -10,32 +10,32 @@ import { delay } from 'lodash';
 export const UserProfile = () => {
   const route = useRoute<'UserProfile'>();
   const { userProfile } = route.params;
-  const { request } = useFetch();
+  // const { request } = useFetch();
 
   const [photos, setPhotos] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchUserImages = async () => {
-    return request({
-      baseUrl: CONSTANTS.baseUrl,
-      path: CONSTANTS.paths.getUserPhotos(userProfile.username),
-      method: 'get',
-    })
-      .then(value => {
-        console.log('Data:', value);
-        setPhotos(value);
-        return Promise.resolve();
-      })
-      .catch(reason => Promise.reject(reason));
-  };
+  // const fetchUserImages = async () => {
+  //   return request({
+  //     baseUrl: CONSTANTS.baseUrl,
+  //     path: CONSTANTS.paths.getUserPhotos(userProfile.username),
+  //     method: 'get',
+  //   })
+  //     .then(value => {
+  //       console.log('Data:', value);
+  //       setPhotos(value);
+  //       return Promise.resolve();
+  //     })
+  //     .catch(reason => Promise.reject(reason));
+  // };
 
-  useEffect(() => {
-    setIsLoading(true);
-    fetchUserImages().then(() => {
-      delay(() => setIsLoading(false), 2000);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   fetchUserImages().then(() => {
+  //     delay(() => setIsLoading(false), 2000);
+  //   });
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   const renderItem = (info: ListRenderItemInfo<any>) => {
     return (
