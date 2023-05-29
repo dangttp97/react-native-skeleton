@@ -17,7 +17,7 @@ yarn add @dangttp/react-native-skeleton
 ## Usage
 
 ```js
-import SkeletonWrapper from 'react-native-skeleton';
+import SkeletonWrapper from '@dangttp/react-native-skeleton';
 
 // ...
 
@@ -29,7 +29,7 @@ import SkeletonWrapper from 'react-native-skeleton';
 Library implements FlatList for showing contents when loading
 
 ```js
-import {SkeletonFlatList} from 'react-native-skeleton';
+import {SkeletonFlatList} from '@dangttp/react-native-skeleton';
 
 // ...
 
