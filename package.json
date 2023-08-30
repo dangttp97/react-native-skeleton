@@ -55,7 +55,7 @@
   },
   "homepage": "https://github.com/dangttp97/react-native-skeleton#readme",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/@dangttp/react-native-skeleton"
   },
   "dependencies": {
     "react-native-linear-gradient": "^2.6.2"
