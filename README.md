@@ -5,19 +5,19 @@ Skeleton Loading animation for React Native app. Adopted with new architecture f
 ## Installation
 
 ```sh
-npm install @dangttp/react-native-skeleton
+npm install @dangttp97/react-native-skeleton
 ```
 
 or
 
 ```sh
-yarn add @dangttp/react-native-skeleton
+yarn add @dangttp97/react-native-skeleton
 ```
 
 ## Usage
 
 ```js
-import SkeletonWrapper from '@dangttp/react-native-skeleton';
+import SkeletonWrapper from '@dangttp97/react-native-skeleton';
 
 // ...
 
@@ -29,7 +29,7 @@ import SkeletonWrapper from '@dangttp/react-native-skeleton';
 Library implements FlatList for showing contents when loading
 
 ```js
-import {SkeletonFlatList} from '@dangttp/react-native-skeleton';
+import {SkeletonFlatList} from '@dangttp97/react-native-skeleton';
 
 // ...
 
